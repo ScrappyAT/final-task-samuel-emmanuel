@@ -163,3 +163,103 @@ My current career direction connects my existing infrastructure experience with 
 **IT & Infrastructure → Software Engineering → Product Engineering → AI Product Engineering**
 
 Rather than treating these as completely separate disciplines, my goal is to develop the ability to understand how a product is designed, built, deployed, operated, and improved.
+
+## 1.2 Positioning & Remote Readiness
+
+### Positioning Statement
+
+**Product Engineer | AI-Assisted Development | Helping teams turn ideas into well-designed, reliable products people actually want to use.**
+
+I am a Product Engineer who combines product thinking, software engineering, and AI-assisted development to turn ideas into useful digital products.
+
+My background in IT and infrastructure also gives me practical experience with the systems that products depend on, including networking, hosting, servers, cloud services, troubleshooting, backups, and production environments.
+
+As I continue developing, I am expanding this foundation into full-stack product engineering, DevOps, and AI product engineering.
+
+---
+
+### Working Hours & Time-Zone Availability
+
+**Standard working hours:** 9:00 AM – 5:00 PM WAT (West Africa Time)
+
+I am available during normal WAT business hours and open to adjusting my schedule when necessary to provide reasonable overlap with distributed teams in:
+
+- United Kingdom
+- Europe
+- United States
+
+For teams that require specific collaboration windows, meetings, stand-ups, pair programming, or other synchronous work, I am willing to arrange additional overlap outside my standard working hours where reasonable.
+
+---
+
+### Current Power Setup
+
+My current backup power option is:
+
+- Portable power bank for essential devices
+
+### Planned Power Improvements
+
+To make my remote-work setup more resilient, I plan to add:
+
+- Inverter backup system
+- Generator as an additional backup power source
+
+**Target:** Complete these improvements between now and November 2026.
+
+The goal is to reduce dependence on a single power source and maintain availability during local power interruptions.
+
+---
+
+### Current Internet Setup
+
+My current internet setup includes:
+
+- **Airtel Pocket WiFi** — portable connection that can also be used when working away from my primary workspace.
+- **ODU internet connection** — primary/fixed connectivity option.
+
+### Planned Internet Improvement
+
+I plan to add:
+
+- **MTN FibreX**
+
+The intention is to maintain multiple independent internet options rather than depend on a single provider.
+
+My target setup is:
+
+**Primary:** MTN FibreX  
+**Backup:** Existing ODU connection  
+**Portable/Fallback:** Airtel Pocket WiFi
+
+If one provider experiences an outage or degraded service, I can switch to another connection rather than being completely disconnected.
+
+---
+
+### Remote-Work Readiness Goal
+
+My goal is to maintain a remote-work environment with redundancy across both power and internet connectivity.
+
+By November 2026, my planned setup will include:
+
+**Power:** Grid supply + Inverter + Generator  
+**Internet:** MTN FibreX + ODU + Airtel Pocket WiFi
+
+This setup is intended to allow me to work reliably with distributed teams while reducing the impact of local power or connectivity interruptions.
+
+---
+
+### 60-Second Introduction Video
+
+**Status:** To be recorded.
+
+The introduction will cover:
+
+- Who I am
+- My primary role
+- My professional background
+- What I build
+- How I use AI in my engineering workflow
+- The type of remote teams and opportunities I am targeting
+
+**Video Link:** To be added after recording.
