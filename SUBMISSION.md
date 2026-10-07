@@ -263,3 +263,69 @@ The introduction will cover:
 - The type of remote teams and opportunities I am targeting
 
 **Video Link:** To be added after recording.
+
+### 1.6 Portfolio
+
+I built and deployed a one-page personal portfolio that presents my current positioning, selected engineering work, professional background, technical skills, and contact information.
+
+**Live Portfolio:**
+https://samuel-emmanuel-portfolio.vercel.app
+
+**GitHub Repository:**
+https://github.com/ScrappyAT/samuel-emmanuel-portfolio
+
+**Positioning:**
+Product Engineer | AI-Assisted Development
+
+**Core statement:**
+I help turn ideas into well-designed, reliable products people actually want to use.
+
+#### Selected Work
+
+The portfolio currently highlights three projects:
+
+1. **Subslice — Subscription & Billing System**
+   - Subscription lifecycle management
+   - Flutterwave payment integration
+   - Webhook verification and idempotency
+   - Append-only payment event logging
+   - Proration and cancellation workflows
+
+2. **ReviewSlice — AI Review Analysis**
+   - AI API integration
+   - Structured output and runtime validation
+   - Sentiment and theme analysis
+   - Background processing
+   - Reliable handling of AI-generated data
+
+3. **Property Listings API**
+   - TypeScript and Express REST API
+   - PostgreSQL data modelling
+   - Agents, properties, images, and inquiries
+   - Seeded development data
+   - Consumer-facing property browsing interface
+
+#### Portfolio Implementation
+
+The portfolio was built with:
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Vercel
+
+It includes:
+
+- Responsive mobile and desktop layouts
+- Light and dark themes with persistent theme preference
+- Project case studies
+- Career progression and current professional experience
+- Technical skills and areas I am currently expanding into
+- Contact information and remote-work availability
+- SEO and social sharing metadata
+
+The site was tested across mobile and desktop layouts before deployment.
+
+**Availability:**
+9:00 AM – 5:00 PM WAT, with planned overlap available for UK, European, and US teams.
