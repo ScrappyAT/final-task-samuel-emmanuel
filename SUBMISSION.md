@@ -264,6 +264,13 @@ The introduction will cover:
 
 **Video Link:** To be added after recording.
 
+#### LinkedIn Posting Evidence
+
+**Portfolio Launch Post:**  
+https://lnkd.in/p/ek9V37su
+
+Published a post introducing my personal portfolio, discussing my transition from IT and infrastructure into product engineering, and sharing lessons from presenting engineering-focused projects and building a responsive website.
+
 ### 1.6 Portfolio
 
 I built and deployed a one-page personal portfolio that presents my current positioning, selected engineering work, professional background, technical skills, and contact information.
@@ -329,3 +336,34 @@ The site was tested across mobile and desktop layouts before deployment.
 
 **Availability:**
 9:00 AM – 5:00 PM WAT, with planned overlap available for UK, European, and US teams.
+
+### 1.7 — Target Company Research
+
+**Goal:** Research 100 companies that may offer suitable Product Engineer, Software Engineer, Full Stack Engineer, or Backend Engineer opportunities.
+
+**Research Tracker:** [Part 1.7 — 100 Target Companies](Research/Part-1.7-Target-Companies-100-Prospects.xlsx)
+
+#### Research Approach
+
+I am building a targeted list of companies based on:
+
+- Alignment with my Product Engineering and Software Engineering career goals.
+- Evidence of engineering recruitment or relevant hiring activity.
+- Remote-work opportunities and eligibility for applicants based in Nigeria.
+- Relevant engineering managers, recruiters, founders, or other potential contacts.
+- Suitability based on my current technical skills and experience.
+
+Each company is documented with its careers page, target role, hiring signal, remote eligibility, priority, research date, and outreach status.
+
+#### Current Progress
+
+- **Target:** 100 companies
+- **Companies identified and listed:** 100
+- **Initial researched leads:** 10
+- **Additional prospects requiring verification:** 90
+- **Named contacts:** Pending research
+- **Cold outreach:** Not started
+
+The initial company list has been compiled in the research tracker. The next stage is to verify current hiring opportunities, eligibility for applicants based in Nigeria, and relevant decision-makers.
+
+**Status:** In progress — company identification completed; verification pending.
