@@ -592,3 +592,103 @@ Mock technical interview and notes, including questions struggled with and impro
 
 
 Part 3 overall status: Technical implementation, documentation, benchmarking, and LinkedIn post completed. Part 3 is not yet fully submitted until the recorded walkthrough and mock interview evidence are added.
+
+---
+
+# Part 4 — Grounded RAG: Document Intelligence
+
+## 4.1 Project Overview
+
+**Project:** Grounded — Verifiable RAG Document Intelligence Assistant
+**Repository:** https://github.com/ScrappyAT/grounded-rag
+**Live Application:** https://grounded-rag-43ee.onrender.com/
+**Status:** Completed, benchmarked, deployed, and verified with live DeepSeek generation.
+
+Grounded is an enterprise-grade Retrieval-Augmented Generation (RAG) assistant that answers complex operational, financial, and policy questions from a controlled knowledge base of 220 corporate documents for fictional fintech **ApexPay Technologies**.
+
+Unlike conventional conversational chatbots prone to hallucinations, Grounded provides mathematically verifiable grounding: every factual claim links to an underlying document chunk, section title, and cosine similarity score. If relevant evidence is absent or falls below a calibrated mathematical threshold (\tau^* = 0.47), the system deterministically refuses to guess.
+
+## 4.2 Architecture & Technology Stack
+
+- **Web Frontend & API:** Next.js 15+ (App Router, React 19, TypeScript, Tailwind CSS)
+- **Vector & Relational Storage:**
+  - **Cloud Production:** Managed **Neon PostgreSQL 18** with `pgvector 0.8.6` in AWS Europe West 2 (London), dimension-partitioned HNSW cosine indexes on `vector(384)`, strict TLS verification (`sslmode=verify-full`).
+  - **Local Development:** PostgreSQL 16 with `pgvector` via Docker Compose.
+- **Distributed State & Rate Limiting:**
+  - **Cloud Production:** Managed **Render Key Value (Valkey 8.1.10)** (Free Tier, Frankfurt) enforcing sliding-window rate limiting (10 req/min per IP) and atomic daily DeepSeek budget safeguards ($2.00 / 500 requests).
+  - **Local Development:** Redis 7 with BullMQ (`ioredis`) in a dedicated persistent worker process (`npm run worker`) for background document parsing, embedding, and vector indexing.
+- **AI Models & Pipeline:**
+  - **Primary Neural Generation:** DeepSeek `deepseek-flash` (via official OpenAI-compatible endpoint `https://api.deepseek.com`, configured in non-thinking mode for deterministic grounded synthesis).
+  - **Semantic Embeddings:** Hugging Face `Xenova/all-MiniLM-L6-v2` (384 dimensions, local CPU ONNX runtime via `@xenova/transformers`, pre-cached in production Docker container).
+  - **Deterministic CI/CD Synthesizer:** `DeterministicGroundedSynthesizer` (`grounded-local-synthesizer-v1`) for isolated offline regression tests.
+  - **Alternative Cloud Adapter:** Google Gemini `gemini-2.5-flash` via `@google/genai` (`LLM_PROVIDER=gemini`).
+- **Production Zero-Worker Deployment:**
+  - Deployed on **Render Free Docker** (Frankfurt, 512 MB RAM) with pre-baked ONNX model weights to guarantee fast cold starts.
+  - The knowledge base of 220 documents (1,517 chunks and 1,185 embedding-cache entries) is pre-seeded into Neon PostgreSQL before launch using `scripts/migrate-production.ts`.
+  - Runs in read-only mode (`READ_ONLY_MODE=true`), securing ingestion routes against public modification and eliminating the need for a continuously running BullMQ worker daemon in production.
+- **Multi-Tier Prompt-Injection Defense:**
+  - Tier 1: Pre-ingestion sanitizer stripping delimiter tags and flagging injection patterns.
+  - Tier 2: Structured JSON context fencing within `<knowledge_context>` envelopes.
+  - Tier 3: Hardened system prompt priority invariants (System Instructions > Untrusted Reference Context).
+  - Tier 4: Post-generation citation and policy override verification (`verifyCitationGrounding`).
+  - Tier 5: Automated adversarial regression testing (`scripts/test-prompt-injection.ts`).
+
+## 4.3 Verified Evaluation & Benchmark Findings
+
+The system was evaluated using an empirical ground-truth benchmark and an independent calibration protocol:
+
+### Corpus & Embedding Metadata
+- **Corpus Size:** 220 corporate policy and operational documents across 8 departments (Customer Support, Accounts & KYC, Payments & Settlements, Refunds & Disputes, Security & Access, Product & Tech Ops, HR & Workplace, Compliance & Regulatory).
+- **Chunked Representation:** 1,517 total chunks across two chunking strategies (Fixed-size character windows vs Structure-aware Markdown section chunking).
+- **Embeddings:** 1,185 unique vector embeddings generated via `Xenova/all-MiniLM-L6-v2` (384 dimensions, unit normalized float32).
+
+### Threshold Calibration Protocol (\tau^* = 0.47)
+- To prevent data leakage, the refusal threshold was calibrated against an **independent 20-question calibration dataset** (15 answerable, 5 unanswerable) prior to assessment evaluation.
+- Sensitivity sweep (\tau \in [0.35, 0.65] in steps of 0.02) identified optimal baseline \tau^* = 0.47, achieving minimum total error (FRR 6.7%, FAR 20.0% on calibration set).
+- **Out-of-sample validation on the official 30-question assessment dataset:**
+  - Answerable questions ($N=25$): **0.0% False Refusal Rate (FRR)**; minimum similarity 0.5011, mean similarity 0.7108 (all $> 0.47$).
+  - Unanswerable out-of-domain questions ($N=5$): **0.0% False Acceptance Rate (FAR)**; maximum similarity 0.4447, mean similarity 0.3963 (all $< 0.47$).
+  - **Empirical Separation Gap:** 0.0564 margin between the highest unanswerable similarity (0.4447) and the lowest answerable similarity (0.5011).
+
+### 120-Case Retrieval Strategy Matrix (2x2 Benchmark)
+Executed across all 30 assessment questions under four distinct configurations (Fixed vs Structure-Aware at $k=3$ and $k=5$):
+
+| Metric | Fixed ($k=3$) | Fixed ($k=5$) | Structure-Aware ($k=3$) | Structure-Aware ($k=5$) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Recall@k (Answerable $N=25$)** | 96.0% | 100.0% | **100.0%** | **100.0%** |
+| **Mean Reciprocal Rank (MRR)** | 0.9600 | 0.9700 | **1.0000** | **1.0000** |
+| **Mean Top Similarity (Answerable)** | 0.6915 | 0.6915 | **0.7108** | **0.7108** |
+| **Mean Top Similarity (Unanswerable)** | 0.4066 | 0.4066 | **0.3963** | **0.3963** |
+| **False Refusal Rate (%)** | 4.0% | 4.0% | **0.0%** | **0.0%** |
+| **Refusal Accuracy (Unanswerable $N=5$)** | 100.0% | 100.0% | **100.0%** | **100.0%** |
+| **Citation Precision (%)** | 100.0% | 100.0% | **100.0%** | **100.0%** |
+| **Average Latency (ms)** | 93.5ms | 35.4ms | 43.7ms | **21.4ms** |
+
+> **Key Architectural Insight:** Fixed-size chunking (600 characters / 100 overlap) suffered boundary truncation on question Q06 (*5 consecutive failed password attempts*), splitting the policy rule across a hard character boundary and dropping Recall@3 to 96%. Structure-aware chunking preserved complete Markdown section context with Anthropic-style contextual headers (`[DOCUMENT: ... | SECTION: ...]`), achieving 100% Recall@3, 1.000 MRR, and higher semantic similarity scores across all evaluated departments.
+
+### Component Boundary Distinction
+- **Retrieval Benchmark (120 cases):** The 120-case matrix measures **semantic vector retrieval quality, ranking accuracy (MRR), and citation precision** via `Xenova/all-MiniLM-L6-v2` over `pgvector`. It is an empirical benchmark of the retrieval pipeline and extractive evidence, not neural generation.
+- **Neural Generation Verification:** Validated separately via live DeepSeek `deepseek-flash` API calls:
+  - 100% citation precision (all cited document IDs verified against retrieved chunks).
+  - Zero prompt-injection leakage across adversarial maintenance bulletins (`DOC-SEC-ADV-999`).
+  - Active policy precedence: Correctly cites active 2026 refund policy `DOC-REF-012` (14 days international wire) over deprecated 2024 policy `DOC-REF-002` (3–5 days).
+  - Production query cost: ~$0.000234 – $0.000350 USD per query (~0.03 cents).
+
+## 4.4 Part 4 Required Evidence Checklist
+
+| Deliverable | Description | Verified Evidence Link |
+| :--- | :--- | :--- |
+| **Repository** | GitHub source repository | https://github.com/ScrappyAT/grounded-rag |
+| **Live Application** | Deployed production web service on Render | https://grounded-rag-43ee.onrender.com/ |
+| **RAG Notes & Pipeline** | RAG research notes and end-to-end flowchart | https://github.com/ScrappyAT/grounded-rag/blob/main/RAG-NOTES.md |
+| **README** | System overview, tech stack, setup, architecture | https://github.com/ScrappyAT/grounded-rag/blob/main/README.md |
+| **Architecture** | Technical design, schema, invariants, cost model | https://github.com/ScrappyAT/grounded-rag/blob/main/ARCHITECTURE.md |
+| **Evaluation Matrix** | 120-case 2x2 matrix, calibration, DeepSeek logs | https://github.com/ScrappyAT/grounded-rag/blob/main/EVALUATION.md |
+| **Learning Log** | 19 architectural decision reflections (Phases 1–7) | https://github.com/ScrappyAT/grounded-rag/blob/main/LEARNING-LOG.md |
+| **Final 3-Minute Demo** | Recorded video walkthrough of live capabilities | https://drive.google.com/file/d/1twPQNpBfK3bu_ETjhZqgYtN40jLtC9l4/view?usp=sharing |
+| **LinkedIn Post 1** | Technical explanation of RAG & verifiable citations | https://lnkd.in/p/dr9C3Tjr |
+| **LinkedIn Post 2** | Empirical evaluation findings & chunking comparison | https://lnkd.in/p/dURTPJXF |
+
+---
+
+**Part 4 overall status:** Complete and fully verified. All 10 required evidence deliverables—including repository, live deployment, architecture specifications, RAG notes, benchmark matrix, learning log, recorded video demonstration, and both public LinkedIn engineering posts—are verified and linked.
