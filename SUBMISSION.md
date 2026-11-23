@@ -465,8 +465,8 @@ This section consolidates evidence from the published source repositories and ou
 Repository: https://github.com/ScrappyAT/rota
 Release branch: https://github.com/ScrappyAT/rota/tree/codex/graduation-release-2026-11-10
 Technical documentation: https://github.com/ScrappyAT/rota/tree/main/docs
-Recorded demo: Completed (14 October 2026); public shareable URL still needs to be inserted. The recording is complete.
-Android build: Installable preview APK: https://expo.dev/artifacts/eas/r197ay-RMlQSdm-zTC_w1I4b_gD85C3_c0NBXPBYi8w.apk (Expo build FINISHED 10 November 2026; Build ID: 947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf). Physical-device acceptance confirmed on a physical Samsung device on 18 November 2026 (login, shift creation/assignment, swap approval, cursor pagination, notifications, quiet hours). Note: EAS artifact URL expires ~10 December 2026 per Expo 30-day retention policy.
+Recorded demo: Completed and supplied — https://drive.google.com/file/d/1-39i6l2UYL1paP3qimbb0Ga-dg96-V2e/view?usp=sharing (Google Drive, public view verified HTTP 200). Covers auth, shift creation/assignment, swap request, manager notification, swap approval, and shift deletion.
+Android build: Installable preview APK: https://expo.dev/artifacts/eas/r197ay-RMlQSdm-zTC_w1I4b_gD85C3_c0NBXPBYi8w.apk (Expo build FINISHED 10 November 2026; Build ID: 947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf; reported artifact expiry **24 November 2026** per Expo build metadata). User-confirmed physical Android acceptance completed on 18 November 2026 on a physical Samsung device (shift creation and assignment, assigned shift visibility, staff swap request and manager approval, activity feed updates, notifications and settings). Keyset cursor pagination gaplessness, quiet hours logic, and cold-restart session persistence are verified by automated tests.
 Backend deployment: Active and healthy at https://rota-production-84ef.up.railway.app (/health returns HTTP 200 OK: {"status":"ok","db":"ok","redis":"ok"}). Deployed using a combined supervisor (apps/api/src/combined-server.ts) running the Express API (port 8080) and BullMQ worker concurrently inside a single container.
 LinkedIn post: Published — https://lnkd.in/p/edPwxhTV
 
@@ -475,7 +475,7 @@ Rota is an Expo/React Native team scheduling mobile app with an Express/PostgreS
 Milestones R1, R2, R3, the combined supervisor (PR #5), and payment reconciliation safeguards (PR #6) are integrated on release branch codex/graduation-release-2026-11-10 and deployed to Railway.
 - Multi-tenant team roles (OWNER, MANAGER, STAFF) and cross-team isolation; shift creation, multi-assignment, manager-only swap approval, and cursor-paginated activity feed.
 - Auth: JWT with refresh token rotation, reuse detection (session revocation family), single-use action tokens, Redis-backed rate limiters, and read routing.
-- Billing: Versioned USD plans, separate-floor proration, scheduled end-period reductions, client idempotency keys, and an append-only financial ledger. Flutterwave sandbox checkout opened for $20 USD/mo Starter plan, test card + OTP authorization succeeded, subscription upgraded to ACTIVE, ledger CHARGE recorded, and $20 invoice marked PAID (verified live 18 November 2026).
+- Billing: Versioned USD plans, separate-floor proration, scheduled end-period reductions, client idempotency keys, and append-only financial ledger (financial_ledger table). Flutterwave sandbox checkout opened via POST /teams/:teamId/subscription/checkout for $20 USD/mo Starter plan, test card + OTP authorization succeeded, subscription upgraded to ACTIVE, and $20 invoice marked PAID (verified live 18 November 2026). Application logic commits corresponding CHARGE entry to financial_ledger upon settlement (not independently queried in production DB).
 - Background workers: PostgreSQL transactional outbox (job_outbox) with BullMQ Redis worker processing notifications and payment reconciliation with bounded retries, quiet hours, and server-owned timezone settings.
 - Payment reconciliation: PR #6 preserves gateway HTTP status codes, categorizes errors into sanitized internal types, defers QUEUED checkouts for 5 minutes, and tracks claim age via updated_at.
 - Database sharding simulation: Two-shard PostgreSQL cluster with MD5 key-hash routing.
@@ -493,16 +493,16 @@ Release report: https://github.com/ScrappyAT/rota/blob/main/docs/GRADUATION-RELE
 README includes required production app-store billing considerations for Rota digital subscriptions and Matinee physical cinema tickets. Flutterwave is allowed by the assessment.
 
 Test and load evidence
-- Automated tests: 478 passing tests across 44 suites on the integrated release; TypeScript strict mode, ESLint (0 errors), shared/API builds, and Docker supervisor smoke tests passed.
+- Automated tests: Historical 10 November 2026 baseline of 478 passing tests across 44 suites on the integrated release (136.167s); subsequent PR #5 supervisor suite (3 tests) and PR #6 reconciliation suite (14 tests) pass with zero regressions. TypeScript strict mode, ESLint (0 errors), shared/API builds, and Docker supervisor smoke tests passed.
 - PostgreSQL/Redis regression coverage includes the deterministic 10,000-row activity dataset and pagination/isolation tests.
 - Historical 200-VU activity before/after caching report: p95 1,271.55ms → 710.95ms, p99 1,530ms → 1,020ms, zero HTTP errors.
 - Separate historical 60-VU peak workload scenario: 30,115 requests, 0% errors, 62.7ms p95.
 Performance report: https://github.com/ScrappyAT/rota/blob/main/load-tests/REPORT.md
 Additional evidence: https://github.com/ScrappyAT/rota/blob/main/docs/PERFORMANCE-REPORT.md
 
-Final evidence to supply
-1. Public share URL for the already-recorded 14 October 2026 demo video (recording completed; awaiting candidate shareable link).
-2. Dedicated published Rota portfolio case study. The portfolio is published at https://samuel-emmanuel-portfolio.vercel.app/ but requires a dedicated Rota page (case study text prepared in docs/ROTA-CASE-STUDY.md).
+Final evidence status:
+1. Demo video: Completed and supplied via Google Drive (https://drive.google.com/file/d/1-39i6l2UYL1paP3qimbb0Ga-dg96-V2e/view?usp=sharing).
+2. Portfolio case study deployment: Case study text is drafted in docs/ROTA-CASE-STUDY.md and prepared on review branch feat/rota-case-study in samuel-emmanuel-portfolio. Dedicated page remains pending deployment to live portfolio (https://samuel-emmanuel-portfolio.vercel.app/).
 
 2.2 Task B — Matinee (ReelPass): Cinema Booking
 Repository: https://github.com/ScrappyAT/Reelpass
@@ -543,13 +543,13 @@ Architecture / technical docs	Linked	Linked
 Automated tests	478 passed / 44 suites on integrated release	Test suites documented in repository
 Load-test evidence	200-VU report linked	500-VU report linked
 Android build	Installable APK linked; physical device testing confirmed (18 Nov 2026)	EAS build link added
-Demo recording	Completed — share link to insert	Completed — Drive link added
+Demo recording	Completed & linked (Drive)	Completed — Drive link added
 LinkedIn engineering post	Published — linked	Published — linked
 Backend deployment	Deployed on Railway & verified healthy (/health 200 OK)	Railway endpoint documented; current uptime not rechecked
-Portfolio case study	Dedicated published Rota page still required (draft ready)	Link to verify
+Portfolio case study	Draft ready on review branch; deployment to live site pending	Link to verify
 
 
-Part 2 overall status: Both mobile projects and both recorded demos are complete according to project history; the consolidated submission now links the actual repositories, implementation documents and test reports. The outstanding evidence tasks are the Rota video share URL, current backend verification, and portfolio case-study links. Relay is the only one of these three projects awaiting its walkthrough recording.
+Part 2 overall status: Both mobile projects and both recorded demos are complete and linked; the consolidated submission now links the actual repositories, implementation documents, test reports, and demonstration recordings. The remaining evidence tasks are the final deployment of Rota's dedicated portfolio case study to the live portfolio site and Relay's walkthrough recording.
 Part 3 — System Design: Relay Notification Infrastructure
 3.1 Project Overview
 Project: Relay — Multi-Tenant Notification Infrastructure Prototype
