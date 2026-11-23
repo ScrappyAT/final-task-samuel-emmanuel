@@ -469,6 +469,7 @@ Recorded demo: Completed and supplied — https://drive.google.com/file/d/1-39i6
 Android build: Installable preview APK: https://expo.dev/artifacts/eas/r197ay-RMlQSdm-zTC_w1I4b_gD85C3_c0NBXPBYi8w.apk (Expo build FINISHED 10 November 2026; Build ID: 947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf; reported artifact expiry **24 November 2026** per Expo build metadata). User-confirmed physical Android acceptance completed on 18 November 2026 on a physical Samsung device (shift creation and assignment, assigned shift visibility, staff swap request and manager approval, activity feed updates, notifications and settings). Keyset cursor pagination gaplessness, quiet hours logic, and cold-restart session persistence are verified by automated tests.
 Backend deployment: Active and healthy at https://rota-production-84ef.up.railway.app (/health returns HTTP 200 OK: {"status":"ok","db":"ok","redis":"ok"}). Deployed using a combined supervisor (apps/api/src/combined-server.ts) running the Express API (port 8080) and BullMQ worker concurrently inside a single container.
 LinkedIn post: Published — https://lnkd.in/p/edPwxhTV
+Portfolio case study: Published — https://samuel-emmanuel-portfolio.vercel.app/projects/rota (HTTP 200 confirmed)
 
 Product and implementation
 Rota is an Expo/React Native team scheduling mobile app with an Express/PostgreSQL/Redis backend.
@@ -502,7 +503,8 @@ Additional evidence: https://github.com/ScrappyAT/rota/blob/main/docs/PERFORMANC
 
 Final evidence status:
 1. Demo video: Completed and supplied via Google Drive (https://drive.google.com/file/d/1-39i6l2UYL1paP3qimbb0Ga-dg96-V2e/view?usp=sharing).
-2. Portfolio case study deployment: Case study text is drafted in docs/ROTA-CASE-STUDY.md and prepared on review branch feat/rota-case-study in samuel-emmanuel-portfolio. Dedicated page remains pending deployment to live portfolio (https://samuel-emmanuel-portfolio.vercel.app/).
+2. Portfolio case study deployment: Completed and published live at https://samuel-emmanuel-portfolio.vercel.app/projects/rota (HTTP 200 confirmed).
+3. APK durable hosting recommendation: Reported artifact expiry is 24 November 2026; recommend attaching downloaded verified local APK (rota-graduation-2026-11-10.apk, SHA256 4b5a559f44191286cbf961b1d92b599c610fb45f7b988dbf871291dfc3aaf7d1) to GitHub Releases on ScrappyAT/rota for permanent access.
 
 2.2 Task B — Matinee (ReelPass): Cinema Booking
 Repository: https://github.com/ScrappyAT/Reelpass
@@ -546,10 +548,10 @@ Android build	Installable APK linked; physical device testing confirmed (18 Nov 
 Demo recording	Completed & linked (Drive)	Completed — Drive link added
 LinkedIn engineering post	Published — linked	Published — linked
 Backend deployment	Deployed on Railway & verified healthy (/health 200 OK)	Railway endpoint documented; current uptime not rechecked
-Portfolio case study	Draft ready on review branch; deployment to live site pending	Link to verify
+Portfolio case study	Published — https://samuel-emmanuel-portfolio.vercel.app/projects/rota	Link to verify
 
 
-Part 2 overall status: Both mobile projects and both recorded demos are complete and linked; the consolidated submission now links the actual repositories, implementation documents, test reports, and demonstration recordings. The remaining evidence tasks are the final deployment of Rota's dedicated portfolio case study to the live portfolio site and Relay's walkthrough recording.
+Part 2 overall status: Both mobile projects and both recorded demos are complete and linked; the consolidated submission now links the actual repositories, implementation documents, test reports, demonstration recordings, and Rota's published portfolio case study. Relay is the only project awaiting its walkthrough recording.
 Part 3 — System Design: Relay Notification Infrastructure
 3.1 Project Overview
 Project: Relay — Multi-Tenant Notification Infrastructure Prototype
