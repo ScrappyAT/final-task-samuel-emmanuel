@@ -482,15 +482,15 @@ Milestones R1, R2, R3, the combined supervisor (PR #5), and payment reconciliati
 - Database sharding simulation: Two-shard PostgreSQL cluster with MD5 key-hash routing.
 
 Documentation links:
-Architecture and diagram: https://github.com/ScrappyAT/rota/blob/main/docs/ARCHITECTURE.md
-Security: https://github.com/ScrappyAT/rota/blob/main/docs/SECURITY.md
-Financial model: https://github.com/ScrappyAT/rota/blob/main/docs/BILLING.md
-Sharding: https://github.com/ScrappyAT/rota/blob/main/docs/SHARDING.md
-Observability: https://github.com/ScrappyAT/rota/blob/main/docs/OBSERVABILITY.md
-Case study: https://github.com/ScrappyAT/rota/blob/main/docs/ROTA-CASE-STUDY.md
-Learning log: https://github.com/ScrappyAT/rota/blob/main/docs/LEARNING-LOG.md
-Implementation record: https://github.com/ScrappyAT/rota/blob/main/docs/IMPLEMENTATION-STATUS.md
-Release report: https://github.com/ScrappyAT/rota/blob/main/docs/GRADUATION-RELEASE-REPORT.md
+Architecture and diagram: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/ARCHITECTURE.md
+Security: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/SECURITY.md
+Financial model: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/BILLING.md
+Sharding: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/SHARDING.md
+Observability: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/OBSERVABILITY.md
+Case study: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/ROTA-CASE-STUDY.md
+Learning log: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/LEARNING-LOG.md
+Implementation record: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/IMPLEMENTATION-STATUS.md
+Release report: https://github.com/ScrappyAT/rota/blob/codex/graduation-release-2026-11-10/docs/GRADUATION-RELEASE-REPORT.md
 README includes required production app-store billing considerations for Rota digital subscriptions and Matinee physical cinema tickets. Flutterwave is allowed by the assessment.
 
 Test and load evidence
