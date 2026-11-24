@@ -514,6 +514,8 @@ Previously deployed API: https://matineeapi-production.up.railway.app/api/v1
 Figma: https://www.figma.com/design/Gh0kzUtGs4547W19iH4WVa/Dev-and-Design-Bootcamp-Learning-Phase
 Recorded demo: https://drive.google.com/file/d/1QA6IZhR8Ic2HOKR-vXoVW-sP6RIQ6ep1/view?usp=drive_link
 LinkedIn post: https://lnkd.in/p/euVj5q72
+Portfolio case study: Published — https://samuel-emmanuel-portfolio.vercel.app/projects/reelpass (HTTP 200 confirmed)
+
 Product and implementation
 Matinee, branded ReelPass, is a React Native/Expo cinema booking and digital ticketing application. The published repository documents:
 - Movie discovery and showtimes, seat selection, and digital QR tickets.
@@ -548,10 +550,10 @@ Android build	Installable APK linked (GitHub Release v1.0.0-graduation); physica
 Demo recording	Completed & linked (Drive)	Completed — Drive link added
 LinkedIn engineering post	Published — linked	Published — linked
 Backend deployment	Deployed on Railway & verified healthy (/health 200 OK)	Railway endpoint documented; current uptime not rechecked
-Portfolio case study	Published — https://samuel-emmanuel-portfolio.vercel.app/projects/rota	Link to verify
+Portfolio case study	Completed (Published — https://samuel-emmanuel-portfolio.vercel.app/projects/rota)	Completed (Published — https://samuel-emmanuel-portfolio.vercel.app/projects/reelpass)
 
 
-Part 2 overall status: Both mobile projects and both recorded demos are complete and linked; the consolidated submission now links the actual repositories, implementation documents, test reports, demonstration recordings, and Rota's published portfolio case study. Relay is the only project awaiting its walkthrough recording.
+Part 2 overall status: Both mobile projects, both recorded demos, and both portfolio case studies (Rota and ReelPass) are complete and linked; the consolidated submission now links the actual repositories, implementation documents, test reports, demonstration recordings, and verified portfolio case studies. Part 2 evidence is fully completed. Relay is the only project awaiting its walkthrough recording.
 Part 3 — System Design: Relay Notification Infrastructure
 3.1 Project Overview
 Project: Relay — Multi-Tenant Notification Infrastructure Prototype
