@@ -466,7 +466,7 @@ Repository: https://github.com/ScrappyAT/rota
 Release branch: https://github.com/ScrappyAT/rota/tree/codex/graduation-release-2026-11-10
 Technical documentation: https://github.com/ScrappyAT/rota/tree/main/docs
 Recorded demo: Completed and supplied — https://drive.google.com/file/d/1-39i6l2UYL1paP3qimbb0Ga-dg96-V2e/view?usp=sharing (Google Drive, public view verified HTTP 200). Covers auth, shift creation/assignment, swap request, manager notification, swap approval, and shift deletion.
-Android build: Installable preview APK: https://expo.dev/artifacts/eas/r197ay-RMlQSdm-zTC_w1I4b_gD85C3_c0NBXPBYi8w.apk (Expo build FINISHED 10 November 2026; Build ID: 947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf; reported artifact expiry **24 November 2026** per Expo build metadata). User-confirmed physical Android acceptance completed on 18 November 2026 on a physical Samsung device (shift creation and assignment, assigned shift visibility, staff swap request and manager approval, activity feed updates, notifications and settings). Keyset cursor pagination gaplessness, quiet hours logic, and cold-restart session persistence are verified by automated tests.
+Android build: Installable preview APK: https://github.com/ScrappyAT/rota/releases/download/v1.0.0-graduation/rota-graduation-v1.0.0.apk (Permanent GitHub Release asset on tag v1.0.0-graduation; historical Expo build FINISHED 10 November 2026, Build ID: 947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf, details: https://expo.dev/accounts/scrappy4rls-team/projects/rota/builds/947dc9d2-f999-43a8-b3e4-3b9a4c8a23cf). User-confirmed physical Android acceptance completed on 18 November 2026 on a physical Samsung device (shift creation and assignment, assigned shift visibility, staff swap request and manager approval, activity feed updates, notifications and settings). Keyset cursor pagination gaplessness, quiet hours logic, and cold-restart session persistence are verified by automated tests.
 Backend deployment: Active and healthy at https://rota-production-84ef.up.railway.app (/health returns HTTP 200 OK: {"status":"ok","db":"ok","redis":"ok"}). Deployed using a combined supervisor (apps/api/src/combined-server.ts) running the Express API (port 8080) and BullMQ worker concurrently inside a single container.
 LinkedIn post: Published — https://lnkd.in/p/edPwxhTV
 Portfolio case study: Published — https://samuel-emmanuel-portfolio.vercel.app/projects/rota (HTTP 200 confirmed)
@@ -504,7 +504,7 @@ Additional evidence: https://github.com/ScrappyAT/rota/blob/main/docs/PERFORMANC
 Final evidence status:
 1. Demo video: Completed and supplied via Google Drive (https://drive.google.com/file/d/1-39i6l2UYL1paP3qimbb0Ga-dg96-V2e/view?usp=sharing).
 2. Portfolio case study deployment: Completed and published live at https://samuel-emmanuel-portfolio.vercel.app/projects/rota (HTTP 200 confirmed).
-3. APK durable hosting recommendation: Reported artifact expiry is 24 November 2026; recommend attaching downloaded verified local APK (rota-graduation-2026-11-10.apk, SHA256 4b5a559f44191286cbf961b1d92b599c610fb45f7b988dbf871291dfc3aaf7d1) to GitHub Releases on ScrappyAT/rota for permanent access.
+3. APK permanent hosting: Verified local APK (rota-graduation-v1.0.0.apk, SHA256 4b5a559f44191286cbf961b1d92b599c610fb45f7b988dbf871291dfc3aaf7d1) published permanently to GitHub Releases on tag v1.0.0-graduation (https://github.com/ScrappyAT/rota/releases/tag/v1.0.0-graduation).
 
 2.2 Task B — Matinee (ReelPass): Cinema Booking
 Repository: https://github.com/ScrappyAT/Reelpass
@@ -544,7 +544,7 @@ GitHub repository	Linked	Linked
 Architecture / technical docs	Linked	Linked
 Automated tests	478 passed / 44 suites on integrated release	Test suites documented in repository
 Load-test evidence	200-VU report linked	500-VU report linked
-Android build	Installable APK linked; physical device testing confirmed (18 Nov 2026)	EAS build link added
+Android build	Installable APK linked (GitHub Release v1.0.0-graduation); physical device testing confirmed (18 Nov 2026)	EAS build link added
 Demo recording	Completed & linked (Drive)	Completed — Drive link added
 LinkedIn engineering post	Published — linked	Published — linked
 Backend deployment	Deployed on Railway & verified healthy (/health 200 OK)	Railway endpoint documented; current uptime not rechecked
